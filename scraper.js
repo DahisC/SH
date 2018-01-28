@@ -14,7 +14,7 @@ puppeteer.launch({headless: false}).then(async browser => {
     });
     
     const page = await browser.newPage();
-    scraping(0);
+    scraping(62);
 
     async function scraping(currentIndex) {
         await page.goto(data[currentIndex].link);
@@ -29,6 +29,7 @@ puppeteer.launch({headless: false}).then(async browser => {
         desc = desc.trim();
         var attr = await page.evaluate(() => document.querySelector('div.product-attributes').innerHTML);
         attr = attr.trim();
+        attr = attr.replace(/\n/g, " ");
         var img = await page.evaluate(() => document.querySelector('div.MagicSlides div.mt-active').innerHTML);
         //console.log(img);
         img = img.split('href="');
@@ -110,10 +111,8 @@ function writeIn(dataObj) {
 				'return-empty': true
 			},	function(err, cells) {
 
+                console.log("getting cells");
                 //console.log(cells);
-
-                dataObj.attr = dataObj.attr.replace('\s')
-                console.log(dataObj.attr);
 
 				cells[0].setValue(getTime(), null);
 				cells[1].setValue(dataObj.index, null);
