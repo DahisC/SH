@@ -18,7 +18,8 @@ puppeteer.launch({headless: false}).then(async browser => {
     });
     
     const page = await browser.newPage();
-    scraping(2754);
+        page.setDefaultNavigationTimeout(900000);
+    scraping(5206);
 
     var name1;
 
@@ -85,7 +86,7 @@ puppeteer.launch({headless: false}).then(async browser => {
             img = await page.evaluate(() => document.querySelector('div.MagicToolboxSelectorsContainer').innerHTML);
             //translate1();
             checkPage();
-        }, (Math.floor(Math.random() * 11) + 15) *100)
+        }, (Math.floor(Math.random() * 11) + 15) *10)
 
         
 
@@ -208,7 +209,7 @@ puppeteer.launch({headless: false}).then(async browser => {
             //writeIn(dataObj);
             saveImages(dataObj);
 
-            fs.appendFileSync('1-2500.json', JSON.stringify(dataObj, null, '\t')+",");
+            fs.appendFileSync('3001-6000.json', JSON.stringify(dataObj, null, '\t')+",");
 
             currentIndex++;
             scraping(currentIndex);
