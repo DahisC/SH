@@ -19,7 +19,7 @@ puppeteer.launch({headless: false}).then(async browser => {
     
     const page = await browser.newPage();
         page.setDefaultNavigationTimeout(900000);
-    scraping(5206);
+    scraping(19608);
 
     var name1;
 
@@ -209,7 +209,7 @@ puppeteer.launch({headless: false}).then(async browser => {
             //writeIn(dataObj);
             saveImages(dataObj);
 
-            fs.appendFileSync('3001-6000.json', JSON.stringify(dataObj, null, '\t')+",");
+            fs.appendFileSync('18001-21000.json', JSON.stringify(dataObj, null, '\t')+",");
 
             currentIndex++;
             scraping(currentIndex);
